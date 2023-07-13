@@ -10,8 +10,8 @@ public class Sorting_02_Bubble_Sort {
             rounds--;
         }
     }
-
-    // Time Complexity : O(n^2)
+    // Worst Case Time Complexity : O(n^2)
+    // Best Case Time Complexity : O(n)
     // Space Complexity : O(1)
 
 
@@ -27,7 +27,6 @@ public class Sorting_02_Bubble_Sort {
             rounds--;
         }
     }
-
     // Time Complexity : O(n^2)
     // Space Complexity : O(1)
     

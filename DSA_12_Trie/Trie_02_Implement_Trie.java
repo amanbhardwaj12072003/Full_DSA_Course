@@ -98,7 +98,7 @@ public class Trie_02_Implement_Trie {
                 return;
             }
         }
-        node.deleteEnd();;
+        node.deleteEnd();
     }
 
 

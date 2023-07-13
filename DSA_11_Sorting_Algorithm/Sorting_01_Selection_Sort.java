@@ -4,7 +4,7 @@ public class Sorting_01_Selection_Sort {
         int n = arr.length;
         for(int i = 0; i < n-1; i++){
             int MinIndex = i;
-            for(int j=i+1;j < n; j++){
+            for(int j = i; j < n; j++){
                 if(arr[j] < arr[MinIndex]) MinIndex = j;
             }
             Swap(arr , i , MinIndex);

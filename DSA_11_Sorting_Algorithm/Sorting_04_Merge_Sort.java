@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Sorting_04_Merge_Sort {
 
     public static void Merge_Sort(int[] arr , int low , int high){
@@ -12,39 +14,32 @@ public class Sorting_04_Merge_Sort {
         Merge_Sort(arr, mid+1, high);
 
         // Finally Merging The Two Sorted Arrays 
-        Merge(arr, low, high);
+        Merge(arr, low, mid, high);
     }
 
-    public static void Merge(int[] arr , int low, int high){
-
-        int mid = low + (high - low)/2;
-
-        int left_len = mid - low + 1;
-        int right_len = high - mid;
-
-        // Storing Left And Right Part 
-        int[] left = new int[left_len];
-        int[] right = new int[right_len];
-        int MainArrayIndex = low;
-        for(int i=0;i<left_len;i++){
-            left[i] = arr[MainArrayIndex++];
-        }
-        // MainArrayIndex = mid+1;
-        for(int j=0;j<right_len;j++){
-            right[j] = arr[MainArrayIndex++];
+    public static void Merge(int[] arr , int low, int mid, int high){
+        List<Integer> temp = new ArrayList<>();
+        int left = low,  right = mid+1;
+        while(left<=mid && right<=high){
+            if(arr[left]<=arr[right]){
+                temp.add(arr[left++]);
+            }
+            else{
+                temp.add(arr[right++]);
+            }
         }
 
-        // Merging Two Sorted Arrays 
-
-        int index1 = 0 , index2 = 0;
-        MainArrayIndex = low;
-
-        while(index1 < left_len && index2 < right_len){
-            if(left[index1] < right[index2]) arr[MainArrayIndex++] = left[index1++];
-            else arr[MainArrayIndex++] = right[index2++];
+        while(left<=mid){
+            temp.add(arr[left++]);
         }
-        while(index1 < left_len) arr[MainArrayIndex++] = left[index1++];
-        while(index2 < right_len) arr[MainArrayIndex++] = right[index2++];
+
+        while(right<=high){
+            temp.add(arr[right++]);
+        }
+
+        for(int index=low;index<=high;index++){
+            arr[index] = temp.get(index-low);
+        }
 
     }
 

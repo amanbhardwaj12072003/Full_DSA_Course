@@ -2,20 +2,21 @@ public class Sorting_03_Insertion_Sort {
 
     public static void Insertion_Sort(int[] arr){
         int n = arr.length;
-        for(int i=1;i<n;i++){
-            int temp = arr[i];
-            int j = i-1;
-            for(;j>=0; j--){
-                if(arr[j] > temp){
-                    arr[j+1] = arr[j];
-                } else{
-                    break;
-                }
+        for(int index=0;index<n;index++){
+            int index_ = index;
+            while(index_>0 && arr[index_-1]>arr[index_]){
+                swap(arr,index_-1,index_);
+                index_--;
             }
-            arr[j+1] = temp;
         }
+    }
+    // Worst Case Time Complexity : O(n^2)
+    // Best Case Time Complexity : O(n)
 
-        // Time Complexity : O(n^2)...Worst Case Complexity
+    public static void swap(int[] arr, int index_, int index){
+        int temp = arr[index];
+        arr[index] = arr[index_];
+        arr[index_] = temp;
     }
 
     public static void main(String[] args) {

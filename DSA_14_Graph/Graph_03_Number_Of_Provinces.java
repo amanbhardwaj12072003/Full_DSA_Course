@@ -23,8 +23,10 @@ public class Graph_03_Number_Of_Provinces {
         for(int i=0;i<V;i++) adj.add(new ArrayList<>());
         for(int i=0;i<V;i++){
             for(int j=0;j<V;j++){
-                adj.get(i).add(j);
-                adj.get(j).add(i);
+                if(adjMatrix[i][j]==1){
+                    adj.get(i).add(j);
+                    adj.get(j).add(i);
+                }
             }
         }
         boolean[] visited = new boolean[V];

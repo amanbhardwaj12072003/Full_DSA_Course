@@ -3,7 +3,6 @@ public class Sorting_05_Quick_Sort {
     public static void Quick_Sort(int[] arr , int low , int high){
 
         // Base Case
-        
         if(low >= high) return;
 
         // Fiding The Point Of Partition In The Array 
@@ -19,27 +18,23 @@ public class Sorting_05_Quick_Sort {
         arr[i] = arr[j];
         arr[j] = temp;
     }
-
+ 
     public static int Partition(int[] arr , int low , int high){
-        
         int pivot = arr[low];
-        int count = 0;
-        for(int i=low+1;i<=high;i++){
-            if(arr[i] <= pivot) count++;
-        }
-
-        int pivotIndex = low + count;
-        Swap(arr , pivotIndex , low);
-
-        int start = low , end = high;
-        while(start < pivotIndex && end > pivotIndex){
-            while(arr[start] < arr[pivotIndex]) start++;
-            while(arr[end] > arr[pivotIndex]) end--;
-            if(start < pivotIndex && end > pivotIndex){
-                Swap(arr,start++,end--);
+        int left = low, right = high;
+        while(left<right){
+            while(arr[left]<=pivot && left<=high-1){
+                left++;
             }
+
+            while(arr[right]>pivot && right>=low+1){
+                right--;
+            }
+
+            if(left < right) Swap(arr,left,right);
         }
-        return pivotIndex;
+        Swap(arr,low,right); // Put pivot to its correct place 
+        return right;
     }
 
     public static void main(String[] args) {
